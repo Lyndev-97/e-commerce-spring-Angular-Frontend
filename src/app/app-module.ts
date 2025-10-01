@@ -4,19 +4,25 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Home } from './pages/home/home';
+import { Categorias } from './pages/categorias/categorias';
+import { HttpClientModule } from '@angular/common/http';
+import { CategoriaService } from './services/domain/categoria.service';
 
 @NgModule({
   declarations: [
     App,
-    Home
+    Home,
+    Categorias
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    CategoriaService
   ],
   bootstrap: [App]
 })
