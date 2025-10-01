@@ -1,0 +1,128 @@
+.login-page { /* Use o seletor da div que envolve tudo no seu home.html */
+    
+    /* Regras de centralização copiadas do antigo 'body' */
+    display: flex; 
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente (CORREÇÃO) */
+    justify-content: center; /* Centraliza verticalmente */
+    
+    /* Garante que o contêiner de centralização ocupe toda a área visível do componente */
+    width: 100%;
+    min-height: 100vh; /* Se precisar de altura total */
+    
+    padding: 20px; 
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Estilo para a seção de boas-vindas/cabeçalho */
+.welcome {
+    text-align: center;
+    margin-bottom: 20px;
+    // CORREÇÃO: Define a largura máxima para que o flexbox do body possa centralizá-lo
+    max-width: 350px; 
+    width: 100%;
+}
+
+.welcome h3 {
+    color: #f8f4f4; /* Cor clara para o texto */
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.welcome img {
+    max-width: 200px; /* Tamanho do logotipo */
+    height: auto;
+}
+
+/* Contêiner para o formulário de login (para dar um card visual) */
+.form-login-container {
+    background-color: #ffffff2c; /* Fundo branco para o "card" */
+    padding: 30px;
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%;
+    max-width: 350px; /* Largura máxima para o formulário */
+    box-sizing: border-box;
+}
+
+/* Estilos para o formulário em si */
+.form-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login label {
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    color: #f8f4f4;
+    margin-bottom: 5px;
+    margin-top: 10px; /* Espaço entre campos */
+}
+
+/* Remove o margin-top do primeiro label */
+.form-login label:first-of-type {
+    margin-top: 0;
+}
+
+.form-login input[type="email"],
+.form-login input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Espaço abaixo do input */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    color: black;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos no width */
+}
+
+.form-login input[type="email"]:focus,
+.form-login input[type="password"]:focus {
+    border-color: #007bff; /* Borda azul ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Sombra azul clara ao focar */
+}
+
+/* Estilo para os botões */
+.btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave na cor de fundo */
+    margin-top: 10px; /* Espaço entre os botões e entre o último input e o primeiro botão */
+}
+
+.btn.primary {
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+.btn.secondary {
+    background-color: #6c757d; /* Cinza para o botão secundário */
+    color: white;
+}
+
+.btn.secondary:hover {
+    background-color: #5a6268; /* Cinza mais escuro ao passar o mouse */
+}
+
+/* Ajustes para telas menores (responsividade básica) */
+@media (max-width: 400px) {
+    .form-login-container {
+        padding: 20px;
+    }
+    .btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
