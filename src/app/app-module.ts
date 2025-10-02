@@ -5,12 +5,18 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Home } from './pages/home/home';
 import { Categorias } from './pages/categorias/categorias';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { CategoriaService } from './services/domain/categoria.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -22,15 +28,24 @@ import { StorageService } from './services/storage.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:8080"], // Ajuste para os seus domínios
+        disallowedRoutes: ["localhost:8080/auth/login"] // Rotas que NÃO devem receber o token
+      }
+    })
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideClientHydration(withEventReplay()),
+    //provideHttpClient(withFetch()),
     CategoriaService,
     ErrorInterceptorProvider,
     AuthService,
-    StorageService
+    StorageService,
+    //JwtHelperService
   ],
   bootstrap: [App]
 })
