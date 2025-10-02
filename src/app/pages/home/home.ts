@@ -20,8 +20,13 @@ export class Home {
 
     login() {
       this.auth.authenticate(this.creds).subscribe(response => {
-        console.log(response.headers.get('Authrization'));
+        
+        const authorizationValue = response.headers.get('Authorization');
+
+        if (authorizationValue) {
+        this.auth.successfulLogin(authorizationValue);
         this.router.navigate(['/categories']); 
+        }
       }, 
       error => {}
     );

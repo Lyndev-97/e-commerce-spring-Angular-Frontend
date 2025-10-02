@@ -10,6 +10,7 @@ import { CategoriaService } from './services/domain/categoria.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthService } from './services/auth.service';
     provideClientHydration(withEventReplay()),
     CategoriaService,
     ErrorInterceptorProvider,
-    AuthService
+    AuthService,
+    StorageService
   ],
   bootstrap: [App]
 })
