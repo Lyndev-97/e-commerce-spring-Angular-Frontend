@@ -7,6 +7,7 @@ import { Home } from './pages/home/home';
 import { Categorias } from './pages/categorias/categorias';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriaService } from './services/domain/categoria.service';
+import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoriaService } from './services/domain/categoria.service';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideClientHydration(withEventReplay()),
-    CategoriaService
+    CategoriaService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [App]
 })

@@ -1,1 +1,15 @@
-<p>categorias works!</p>
+<div class="content-padding">
+  <div class="list-container">
+    <button class="list-item" *ngFor="let item of items">
+      
+      <div class="item-thumbnail start">
+        <img src="{{bucketUrl}}" alt="">
+      </div>
+      
+      <div class="item-details">
+        <h2>{{item.nome}}</h2>
+      </div>
+      
+    </button>
+  </div>
+</div>
