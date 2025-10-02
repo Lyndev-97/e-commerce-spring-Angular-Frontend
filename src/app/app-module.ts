@@ -8,6 +8,8 @@ import { Categorias } from './pages/categorias/categorias';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriaService } from './services/domain/categoria.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideClientHydration(withEventReplay()),
     CategoriaService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    AuthService
   ],
   bootstrap: [App]
 })

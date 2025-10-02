@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'
+import { CredenciaisDTO } from '../../models/credenciais.dto';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +11,21 @@ import { Router } from '@angular/router'
 })
 export class Home {
 
-
-  constructor(private router: Router) {} 
+  creds: CredenciaisDTO = {
+    email: "",
+    senha: ""
+  }
+  constructor(private router: Router, public auth: AuthService) {} 
    
 
     login() {
+      this.auth.authenticate(this.creds).subscribe(response => {
+        console.log(response.headers.get('Authrization'));
+        this.router.navigate(['/categories']); 
+      }, 
+      error => {}
+    );
 
-      this.router.navigate(['/categories']); 
+      
 }
 }

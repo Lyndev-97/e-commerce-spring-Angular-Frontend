@@ -8,10 +8,10 @@
     <div class="form-login-container"> 
     <form class="form-login">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Digite seu email">
+            <input type="email" id="email" name="email" placeholder="Digite seu email" [(ngModel)]="creds.email">
 
             <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" [(ngModel)]="creds.senha">
 
             <button type="button" class="btn primary" (click)="login()">ENTRAR</button>
             <button type="button" class="btn secondary">REGISTRAR</button> 
