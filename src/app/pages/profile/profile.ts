@@ -3,6 +3,7 @@ import { StorageService } from '../../services/storage.service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { API_CONFIG } from '../../config/api.config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class Profile implements OnInit{
   
   cliente: ClienteDTO | undefined;
   
-  constructor(public storage: StorageService, public clienteService: ClienteService){}
+  constructor(public storage: StorageService, public clienteService: ClienteService, private router: Router){}
 
   ngOnInit(): void {
     let localUser = this.storage.getLocalUser();
@@ -23,7 +24,14 @@ export class Profile implements OnInit{
         this.cliente = response;
         //buscar imagem do bucket s2
       },
-    error => {});
+    error => {
+      if(error.status == 403){
+          this.router.navigate(['']); 
+      }
+    });
+    
+  }else{
+      this.router.navigate(['']);
     }
   }
 
