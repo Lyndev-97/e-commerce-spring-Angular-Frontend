@@ -1,4 +1,7 @@
 <app-menu page="Profile"></app-menu>
-<div>
-    <p>{{email}}</p>
+<div class="ClientImg">
+    <img class="circle" [src]="cliente?.imageUrl || './blank-avatar-image.jpg'">
 </div>
+
+<h2 text-center>{{cliente?.nome}}</h2>
+<p text-center>{{cliente?.email}}</p>

@@ -15,6 +15,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtModule } from '@auth0/angular-jwt';
 import { Profile } from './pages/profile/profile';
 import { Menu } from './pages/menu/menu';
+import { ClienteService } from './services/domain/cliente.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -50,6 +51,7 @@ export function tokenGetter() {
     AuthService,
     StorageService,
     //JwtHelperService
+    ClienteService
   ],
   bootstrap: [App]
 })
