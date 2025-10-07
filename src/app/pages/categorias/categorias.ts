@@ -10,6 +10,7 @@ import { API_CONFIG } from '../../config/api.config';
   styleUrl: './categorias.scss'
 })
 export class Categorias implements OnInit{
+
   bucketUrl: string = API_CONFIG.bucketBaseUrl;
   items!: CategoriaDTO[];
 
@@ -23,7 +24,5 @@ export class Categorias implements OnInit{
     error => {}
   );
   }
-
-
 
 }

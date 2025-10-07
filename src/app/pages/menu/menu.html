@@ -1,0 +1,35 @@
+<header class="app-header">
+  <div class="toolbar-content">
+    
+    <button class="menu-toggle-button" (click)="toggleMenu()">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+    </button>
+    
+    <h1 class="page-title">{{page}}</h1>
+  </div>
+</header>
+
+<div 
+  class="sidebar-overlay" 
+  *ngIf="isMenuOpen" 
+  (click)="closeMenu()">
+</div>
+
+<nav 
+  class="sidebar" 
+  [class.open]="isMenuOpen">
+  
+  <header>
+    <h2>Navegação</h2>
+    <button (click)="closeMenu()">X</button>
+  </header>
+  
+  <ul>
+    <li><a [routerLink]="['/profile']" (click)="closeMenu()">Profile</a></li>
+    <li><a [routerLink]="['/categories']" (click)="closeMenu()">Categorias</a></li>
+    <li><a [routerLink]="['/account']" (click)="closeMenu()">Minha Conta</a></li>
+  </ul>
+
+</nav>

@@ -13,6 +13,8 @@ import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtModule } from '@auth0/angular-jwt';
+import { Profile } from './pages/profile/profile';
+import { Menu } from './pages/menu/menu';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -22,7 +24,9 @@ export function tokenGetter() {
   declarations: [
     App,
     Home,
-    Categorias
+    Categorias,
+    Profile,
+    Menu
   ],
   imports: [
     BrowserModule,
