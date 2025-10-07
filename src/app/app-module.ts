@@ -16,6 +16,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { Profile } from './pages/profile/profile';
 import { Menu } from './pages/menu/menu';
 import { ClienteService } from './services/domain/cliente.service';
+import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -47,6 +48,7 @@ export function tokenGetter() {
     provideClientHydration(withEventReplay()),
     //provideHttpClient(withFetch()),
     CategoriaService,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
