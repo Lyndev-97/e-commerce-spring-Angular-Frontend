@@ -17,6 +17,8 @@ import { Profile } from './pages/profile/profile';
 import { Menu } from './pages/menu/menu';
 import { ClienteService } from './services/domain/cliente.service';
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorDialog } from './interceptors/error-dialog/error-dialog';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -28,13 +30,15 @@ export function tokenGetter() {
     Home,
     Categorias,
     Profile,
-    Menu
+    Menu,
+    ErrorDialog
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
