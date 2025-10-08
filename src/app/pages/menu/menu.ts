@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,7 @@ export class Menu {
    @Input() page!: string; 
     isMenuOpen: boolean = false; 
 
-  constructor(private router: Router){}
+  constructor(private router: Router, public auth: AuthService){}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -20,6 +21,10 @@ export class Menu {
   
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }
