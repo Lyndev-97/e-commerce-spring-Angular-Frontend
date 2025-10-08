@@ -11,13 +11,13 @@
       <label class="stacked-label" for="inputNome">Nome*</label>
       <input id="inputNome" formControlName="nome" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors">Valor inválido</p> -->
+    <p class="danger validation-error" *ngIf="formGroup.controls['nome'].dirty && formGroup.controls['nome'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputEmail">Email*</label>
       <input id="inputEmail" formControlName="email" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors">Valor inválido</p>
 
     <fieldset class="radio-group-container" formControlName="tipo">
       <legend class="list-header">Tipo de cliente</legend>
@@ -35,25 +35,25 @@
       <label class="stacked-label" for="inputCpfCnpj">CPF ou CNPJ</label>
       <input id="inputCpfCnpj" formControlName="cpfOuCnpj" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.cpfOuCnpj.dirty && formGroup.controls.cpfOuCnpj.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['cpfOuCnpj'].dirty && formGroup.controls['cpfOuCnpj'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputSenha">Senha*</label>
       <input id="inputSenha" formControlName="senha" type="password" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['senha'].dirty && formGroup.controls['senha'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputLogradouro">Logradouro*</label>
       <input id="inputLogradouro" formControlName="logradouro" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.logradouro.dirty && formGroup.controls.logradouro.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['logradouro'].dirty && formGroup.controls['logradouro'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputNumero">Número*</label>
       <input id="inputNumero" formControlName="numero" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.numero.dirty && formGroup.controls.numero.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['numero'].dirty && formGroup.controls['numero'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputComplemento">Complemento</label>
@@ -69,13 +69,13 @@
       <label class="stacked-label" for="inputCep">CEP*</label>
       <input id="inputCep" formControlName="cep" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['cep'].dirty && formGroup.controls['cep'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputTelefone1">Telefone 1*</label>
       <input id="inputTelefone1" formControlName="telefone1" type="text" class="text-input">
     </div>
-    <!--<p class="danger validation-error" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors">Valor inválido</p>-->
+    <p class="danger validation-error" *ngIf="formGroup.controls['telefone1'].dirty && formGroup.controls['telefone1'].errors">Valor inválido</p>
 
     <div class="form-item">
       <label class="stacked-label" for="inputTelefone2">Telefone 2</label>
