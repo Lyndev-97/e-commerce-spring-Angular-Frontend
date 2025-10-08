@@ -1,198 +1,168 @@
-/* Variáveis de Cores */
+/* Paleta de cores */
 :root {
-    --color-background: rgb(10, 5, 23);
-    --color-primary: rgb(31, 17, 71);
-    --color-highlight: rgb(180, 134, 245);
-    --color-white: #ffffff;
-    --color-danger: #ff5555;
-    --color-text-dark: rgb(31, 17, 71); /* Nova variável para texto escuro */
-    --form-max-width: 600px;
+  --color-background-dark: rgb(10, 5, 23);
+  --color-primary: rgb(31, 17, 71);
+  --color-highlight: rgb(180, 134, 245);
+  --color-white: #ffffff;
 }
 
-/* 1. Estilos Globais e Background */
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Fundo com degradê mais forte */
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--color-background);
-    color: var(--color-white); /* Cor de texto padrão alterada para branco */
-    margin: 0;
-    padding: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(10, 5, 23, 1) 0%,
+    rgba(20, 10, 45, 1) 35%,
+    rgba(31, 17, 71, 1) 75%,
+    rgba(60, 35, 120, 1) 100%
+  );
+  color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 2. Cabeçalho */
+/* Header */
 .app-header {
-    background-color: var(--color-primary);
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: rgba(31, 17, 71, 0.6);
+  backdrop-filter: blur(6px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Estilo para o botão de ação no Header (Login/Voltar) */
+.app-header .title {
+  font-size: 1.6rem;
+  color: var(--color-highlight);
+  font-weight: 600;
+}
+
 .header-button {
-    /* Cor de fundo transparente para se misturar ao header */
-    background: transparent;
-    /* Cor do texto de destaque (Lilás) */
-    color: var(--color-highlight); 
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s;
+  background: transparent;
+  border: 1px solid var(--color-highlight);
+  color: var(--color-highlight);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .header-button:hover {
-    /* Mudar para branco no hover */
-    color: var(--color-white);
+  background: var(--color-highlight);
+  color: var(--color-primary);
 }
 
-.toolbar {
-    max-width: var(--form-max-width);
-    margin: 0 auto;
-    padding: 0 16px;
-    
-    /* ALTERAÇÃO CRUCIAL: Usa Flexbox para posicionar os itens */
-    display: flex;
-    justify-content: space-between; /* Espaçamento entre o título e o botão */
-    align-items: center; /* Alinha verticalmente */
-}
-
-.title {
-    color: var(--color-highlight);
-    font-size: 20px;
-    margin: 0;
-    /* Alinhamento ao centro da toolbar */
-    flex-grow: 1; /* Permite que o título ocupe o espaço extra */
-    text-align: center; 
-}
-
-/* 3. Conteúdo Principal e Padding (Alinhamento do formulário à esquerda) */
+/* Conteúdo principal */
 .content-padding {
-    max-width: var(--form-max-width);
-    margin: 20px auto; 
-    padding: 0 16px 40px;
-    /* Garante que o conteúdo do formulário comece alinhado à esquerda dentro do container */
-    text-align: left; 
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
-/* 4. Item de Formulário */
+form {
+  background-color: rgba(31, 17, 71, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(180, 134, 245, 0.15);
+  max-width: 480px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+/* Itens do formulário */
 .form-item {
-    padding: 10px 0; 
-    margin-bottom: 5px; 
-    border-bottom: none; 
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
 }
 
-/* 5. Labels */
 .stacked-label {
-    display: block;
-    font-size: 14px;
-    color: var(--color-highlight);
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-highlight);
 }
 
-/* 6. Inputs (com LINHA BRANCA visível) */
 .text-input,
-.form-item select { 
-    width: 100%;
-    padding: 8px 10px;
-
-    /* Fundo transparente para integrar com o tema escuro */
-    background-color: transparent;
-    color: var(--color-white); 
-    
-    /* LINHA BRANCA visível sob cada campo */
-    border: none;
-    border-bottom: 2px solid var(--color-white);
-    
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, border-width 0.3s;
-    outline: none; 
+select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(180, 134, 245, 0.3);
+  border-radius: 12px;
+  color: var(--color-white);
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Destaque ao focar com borda lilás */
 .text-input:focus,
-.form-item select:focus {
-    border-bottom: 2px solid var(--color-highlight);
+select:focus {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 10px rgba(180, 134, 245, 0.4);
 }
 
-/* Estilização para o <select> (Dropdowns) */
-.form-item select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* Ícone SVG na cor de destaque (Lilás) */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23B486F5%22%20d%3D%22M6%209l-4-4h8l-4%204z%22%2F%3E%3C%2Fsvg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    padding-right: 35px; 
-}
-
-/* 7. Radio Group e List Header */
+/* Grupo de radio */
 .radio-group-container {
-    border: 1px solid var(--color-primary);
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(180, 134, 245, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
 }
 
-.list-header {
-    color: var(--color-highlight);
-    font-size: 16px;
-    margin-bottom: 10px;
-    padding: 0;
-    border: none;
-    font-weight: bold;
+.radio-group-container legend {
+  color: var(--color-highlight);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .radio-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0px;
-    color: var(--color-white); /* Garante que o texto radio seja branco */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .radio-item label {
-    margin-left: 10px;
-    cursor: pointer;
-    padding: 8px;
+  color: var(--color-white);
 }
 
-.radio-item input[type="radio"] {
-    accent-color: var(--color-highlight); 
-}
-
-/* 8. Botão de Submissão */
+/* Botão de envio */
 .submit-button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: var(--color-highlight);
-    color: var(--color-background); 
-    border: none;
-    border-radius: 4px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: background-color 0.3s;
+  width: 100%;
+  background: var(--color-highlight);
+  color: var(--color-primary);
+  border: none;
+  padding: 0.9rem;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 .submit-button:hover {
-    background-color: rgb(200, 160, 255); 
+  background: rgb(200, 160, 255);
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(180, 134, 245, 0.5);
 }
 
 .submit-button:disabled {
-    background-color: var(--color-primary);
-    color: #888;
-    cursor: not-allowed;
+  background: rgba(180, 134, 245, 0.4);
+  cursor: not-allowed;
 }
 
-/* 9. Mensagens de Validação */
-.validation-error {
-    color: var(--color-danger);
-    font-size: 12px;
-    margin-top: -5px; 
-    margin-left: 5px;
-    padding: 0;
+/* Responsividade */
+@media (max-width: 600px) {
+  form {
+    padding: 2rem 1.5rem;
+  }
 }
