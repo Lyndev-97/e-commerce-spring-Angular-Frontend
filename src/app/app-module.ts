@@ -21,6 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 //import { ErrorDialog } from './interceptors/error-dialog/error-dialog';
 import { Signup } from './pages/signup/signup';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EstadoService } from './services/domain/estado.service';
+import { CidadeService } from './services/domain/cidade.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -61,7 +63,9 @@ export function tokenGetter() {
     AuthService,
     StorageService,
     //JwtHelperService
-    ClienteService
+    ClienteService,
+    EstadoService,
+    CidadeService
   ],
   bootstrap: [App]
 })

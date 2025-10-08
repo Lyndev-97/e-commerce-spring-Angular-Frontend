@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CidadeService } from '../../services/domain/cidade.service';
+import { EstadoService } from '../../services/domain/estado.service';
+import { error } from 'console';
+import { EstadoDTO } from '../../models/estado.dto';
+import { CidadeDTO } from '../../models/cidade.dto';
 
 @Component({
   selector: 'app-signup',
@@ -8,14 +13,18 @@ import { Router } from '@angular/router';
   templateUrl: './signup.html',
   styleUrl: './signup.scss'
 })
-export class Signup {
+export class Signup implements OnInit{
 
-  estados: any;
-  cidades: any;
+estados: EstadoDTO[] | null = null;
+cidades: CidadeDTO[] | null = null;
 
   formGroup: FormGroup;
   
-  constructor(private router: Router, public formBuilder: FormBuilder) {
+  constructor(private router: Router, 
+              public formBuilder: FormBuilder,
+              public cidadeService: CidadeService,
+              public estadoService: EstadoService) {
+
     this.formGroup = this.formBuilder.group({
       nome: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
       email: ['joaquim@gmail.com', [Validators.required, Validators.email]],
@@ -33,10 +42,24 @@ export class Signup {
       estadoId : [null, [Validators.required]],
       cidadeId : [null, [Validators.required]]      
     });
-  } 
+  }
+
+  ngOnInit(): void {
+    this.estadoService.findAll().subscribe(response => {
+      this.estados = response;
+      this.formGroup.controls['estadoId'].setValue(this.estados[0].id);
+      this.updateCidades();
+    },
+  error => {});
+  }
 
   updateCidades() {
-    throw new Error('Method not implemented.');
+    let estado_id = this.formGroup.value.estadoId;
+    this.cidadeService.findAll(estado_id).subscribe(response =>{
+      this.cidades = response;
+      this.formGroup.controls['cidadeId'].setValue(null);
+    },
+    error => {});
   }
   
   signupUser() {
