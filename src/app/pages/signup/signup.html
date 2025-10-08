@@ -1,0 +1,106 @@
+<header class="app-header">
+  <div class="toolbar">
+    <h1 class="title">Signup</h1>
+    <button class="header-button" (click)="goToLogin()">Back to Login</button>
+  </div>
+</header>
+
+<main class="content-padding">
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+    <div class="form-item">
+      <label class="stacked-label" for="inputNome">Nome*</label>
+      <input id="inputNome" formControlName="nome" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors">Valor inválido</p> -->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputEmail">Email*</label>
+      <input id="inputEmail" formControlName="email" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors">Valor inválido</p>-->
+
+    <fieldset class="radio-group-container" formControlName="tipo">
+      <legend class="list-header">Tipo de cliente</legend>
+      <div class="radio-item">
+        <label for="tipoPF">Pessoa física</label>
+        <input type="radio" id="tipoPF" name="tipo" value="1" [checked]="formGroup.get('tipo')?.value === '1'">
+      </div>
+      <div class="radio-item">
+        <label for="tipoPJ">Pessoa jurídica</label>
+        <input type="radio" id="tipoPJ" name="tipo" value="2" [checked]="formGroup.get('tipo')?.value === '2'">
+      </div>
+    </fieldset>
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputCpfCnpj">CPF ou CNPJ</label>
+      <input id="inputCpfCnpj" formControlName="cpfOuCnpj" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.cpfOuCnpj.dirty && formGroup.controls.cpfOuCnpj.errors">Valor inválido</p>-->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputSenha">Senha*</label>
+      <input id="inputSenha" formControlName="senha" type="password" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors">Valor inválido</p>-->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputLogradouro">Logradouro*</label>
+      <input id="inputLogradouro" formControlName="logradouro" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.logradouro.dirty && formGroup.controls.logradouro.errors">Valor inválido</p>-->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputNumero">Número*</label>
+      <input id="inputNumero" formControlName="numero" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.numero.dirty && formGroup.controls.numero.errors">Valor inválido</p>-->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputComplemento">Complemento</label>
+      <input id="inputComplemento" formControlName="complemento" type="text" class="text-input">
+    </div>
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputBairro">Bairro</label>
+      <input id="inputBairro" formControlName="bairro" type="text" class="text-input">
+    </div>
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputCep">CEP*</label>
+      <input id="inputCep" formControlName="cep" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors">Valor inválido</p>-->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputTelefone1">Telefone 1*</label>
+      <input id="inputTelefone1" formControlName="telefone1" type="text" class="text-input">
+    </div>
+    <!--<p class="danger validation-error" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors">Valor inválido</p>-->
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputTelefone2">Telefone 2</label>
+      <input id="inputTelefone2" formControlName="telefone2" type="text" class="text-input">
+    </div>
+
+    <div class="form-item">
+      <label class="stacked-label" for="inputTelefone3">Telefone 3</label>
+      <input id="inputTelefone3" formControlName="telefone3" type="text" class="text-input">
+    </div>
+
+    <div class="form-item">
+      <label class="stacked-label" for="selectEstado">Estado*</label>
+      <select id="selectEstado" formControlName="estadoId" (change)="updateCidades()">
+        <option *ngFor="let estado of estados; first as f" [value]="estado.id" [selected]="f">{{estado.nome}}</option>
+      </select>
+    </div>
+
+    <div class="form-item">
+      <label class="stacked-label" for="selectCidade">Cidade*</label>
+      <select id="selectCidade" formControlName="cidadeId">
+        <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="formGroup.invalid" class="submit-button">Criar conta</button>
+  </form>
+</main>

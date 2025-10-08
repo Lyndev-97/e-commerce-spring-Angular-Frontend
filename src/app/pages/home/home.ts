@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
-export class Home {//implements OnInit{
+export class Home { //implements OnInit{
 
   creds: CredenciaisDTO = {
     email: "",
@@ -46,8 +46,11 @@ export class Home {//implements OnInit{
         }
       }, 
       error => {}
-    );
-
-      
+    );      
 }
+
+    signup() {
+        this.router.navigate(['/signup']);
+    }
+
 }

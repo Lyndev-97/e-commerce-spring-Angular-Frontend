@@ -18,7 +18,9 @@ import { Menu } from './pages/menu/menu';
 import { ClienteService } from './services/domain/cliente.service';
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ErrorDialog } from './interceptors/error-dialog/error-dialog';
+//import { ErrorDialog } from './interceptors/error-dialog/error-dialog';
+import { Signup } from './pages/signup/signup';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -31,7 +33,8 @@ export function tokenGetter() {
     Categorias,
     Profile,
     Menu,
-    ErrorDialog
+    //ErrorDialog,
+    Signup
   ],
   imports: [
     BrowserModule,
@@ -39,10 +42,11 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     MatDialogModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost:8080"], // Ajuste para os seus domínios
+        allowedDomains: ["localhost:8080"],
         disallowedRoutes: ["localhost:8080/auth/login"] // Rotas que NÃO devem receber o token
       }
     })
