@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CidadeService } from '../../services/domain/cidade.service';
 import { EstadoService } from '../../services/domain/estado.service';
-import { error } from 'console';
 import { EstadoDTO } from '../../models/estado.dto';
 import { CidadeDTO } from '../../models/cidade.dto';
+import { ClienteService } from '../../services/domain/cliente.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +23,8 @@ cidades: CidadeDTO[] | null = null;
   constructor(private router: Router, 
               public formBuilder: FormBuilder,
               public cidadeService: CidadeService,
-              public estadoService: EstadoService) {
+              public estadoService: EstadoService,
+              public clienteService: ClienteService) {
 
     this.formGroup = this.formBuilder.group({
       nome: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
@@ -63,7 +64,21 @@ cidades: CidadeDTO[] | null = null;
   }
   
   signupUser() {
-    throw new Error('Method not implemented.');
+    //console.log(this.formGroup.value);
+    this.clienteService.insert(this.formGroup.value).subscribe(response => {
+      if(response.ok){
+      this.showInsertOk();
+      }
+    },
+  error =>{
+    alert(" ❌ Erro ao cadastrar bixo! Vai ter que chamar os TI ☠️");
+  });
+  
+  }
+
+  showInsertOk() {
+    alert("Ai nossa, deu certo safado !")
+    this.router.navigate([''])
   }
   
   goToLogin() {

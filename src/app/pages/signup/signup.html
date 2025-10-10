@@ -19,15 +19,15 @@
     </div>
     <p class="danger validation-error" *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors">Valor inválido</p>
 
-    <fieldset class="radio-group-container" formControlName="tipo">
+    <fieldset class="radio-group-container">
       <legend class="list-header">Tipo de cliente</legend>
       <div class="radio-item">
         <label for="tipoPF">Pessoa física</label>
-        <input type="radio" id="tipoPF" name="tipo" value="1" [checked]="formGroup.get('tipo')?.value === '1'">
+        <input type="radio" id="tipoPF" name="tipo" value="1" formControlName="tipo">
       </div>
       <div class="radio-item">
         <label for="tipoPJ">Pessoa jurídica</label>
-        <input type="radio" id="tipoPJ" name="tipo" value="2" [checked]="formGroup.get('tipo')?.value === '2'">
+        <input type="radio" id="tipoPJ" name="tipo" value="2" formControlName="tipo">
       </div>
     </fieldset>
 

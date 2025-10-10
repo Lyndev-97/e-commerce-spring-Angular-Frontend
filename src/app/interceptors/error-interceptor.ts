@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { StorageService } from "../services/storage.service";
+import { FieldMessage } from "../models/fieldMessage";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
@@ -37,6 +38,10 @@ export class ErrorInterceptor implements HttpInterceptor{
                     case 403:
                         this.handle403();
                         break;
+
+                    case 422:
+                        this.handle422(errorObj);
+                        break;
                     
                     default:
                         this.handleDefaultError(errorObj);
@@ -58,6 +63,18 @@ export class ErrorInterceptor implements HttpInterceptor{
 
     handleDefaultError(errorObj: any){
         alert('Erro: ' + errorObj.status + ': ' + errorObj.error + 'mensagem de erro: ' + errorObj.message);
+    }
+
+    handle422(errorObj: any) {
+        alert("Erro 422 de validação" + this.listErrors(errorObj.errors))
+    }
+
+    listErrors(messages : FieldMessage[]) : string {
+        let s : string = '';
+        for(var i=0; i<messages.length; i++){
+            s = s + '<p><strong>' + messages[i].fieldName + "</strong>: " +messages[i].message + '</p>';
+        }
+        return s;
     }
     
 }
