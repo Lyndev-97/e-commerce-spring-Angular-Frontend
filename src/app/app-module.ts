@@ -23,6 +23,7 @@ import { Signup } from './pages/signup/signup';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EstadoService } from './services/domain/estado.service';
 import { CidadeService } from './services/domain/cidade.service';
+import { Produtos } from './pages/produtos/produtos';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -36,7 +37,8 @@ export function tokenGetter() {
     Profile,
     Menu,
     //ErrorDialog,
-    Signup
+    Signup,
+    Produtos
   ],
   imports: [
     BrowserModule,

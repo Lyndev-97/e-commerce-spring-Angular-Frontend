@@ -1,0 +1,37 @@
+<header class="app-header">
+  <nav class="navbar">
+    <button class="menu-button" (click)="toggleMenu()">
+      <span class="icon-menu">☰</span>
+    </button>
+    <h1 class="page-title">Produtos</h1>
+  </nav>
+</header>
+
+<main class="content-area">
+  <div class="fab-container">
+    <button class="cart-fab" [routerLink]="['/cart']">
+      <span class="icon-cart">🛒</span>
+    </button>
+  </div>
+
+  <div
+    class="refresher-placeholder"
+    (touchstart)="startRefresh($event)"
+    (touchend)="endRefresh($event)"
+  ></div>
+
+  <ul class="product-list">
+    <li *ngFor="let item of items" class="product-item" (click)="showDetail(item.id)">
+      <div class="item-thumbnail">
+        <img [src]="item.imageUrl || 'prod.jpg'" [alt]="item.nome" />
+      </div>
+
+      <div class="item-details">
+        <h2 class="item-name">{{ item.nome }}</h2>
+        <p class="item-price">{{ item.preco | currency : 'BRL' : 'symbol' : '1.2-2' }}</p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="infinite-scroll-trigger" (scroll)="checkScrollForMoreData()"></div>
+</main>
