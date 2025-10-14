@@ -1,0 +1,33 @@
+<header>
+  <nav>
+    <button (click)="toggleMenu()">
+      <!-- Placeholder para o ícone de menu -->
+      ← Menu
+    </button>
+    <h1>Detalhes do Produto</h1>
+  </nav>
+</header>
+
+<main>
+  <div class="fab-container">
+    <button (click)="goToCart()">🛒</button>
+  </div>
+
+  @if (item) {
+  <section class="card">
+    <img [src]="item.imageUrl || 'prod.jpg'" alt="Imagem do Produto" />
+
+    <div>
+      <h2>
+        {{ item.nome }}
+      </h2>
+      <p>
+        {{ item.preco | currency }}
+      </p>
+    </div>
+  </section>
+
+  <!-- Botão Adicionar ao carrinho -->
+  <button (click)="addToCart(item)">Adicionar ao carrinho</button>
+  }
+</main>

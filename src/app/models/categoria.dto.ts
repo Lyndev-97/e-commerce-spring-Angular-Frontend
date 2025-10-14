@@ -1,5 +1,5 @@
-export interface CategoriaDTO{
-    id: string;
+export interface CategoriaDTO {
+    id: number;
     nome: string;
 
 }

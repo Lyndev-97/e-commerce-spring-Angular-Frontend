@@ -19,16 +19,22 @@ export class Categorias implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categoriaService.findAll().subscribe(response => {
+    this.categoriaService.findAll().subscribe((response: CategoriaDTO[]) => {
       this.items = response;
     },
       error => { }
     );
   }
 
+  showProdutos(categoria_id: number | null | undefined) {
 
-  showProdutos() {
-    this.router.navigate(['/ProdutosPage']);
+    if (!categoria_id) {
+      console.error("ERRO DE DADOS: O item clicado não possui um 'id' válido.");
+      return;
+    }
+
+    const idString = categoria_id + '';
+    this.router.navigate(['/ProdutosPage', idString]);
   }
 
 

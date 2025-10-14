@@ -24,6 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EstadoService } from './services/domain/estado.service';
 import { CidadeService } from './services/domain/cidade.service';
 import { Produtos } from './pages/produtos/produtos';
+import { ProdutoService } from './services/domain/produto.service';
+import { ProdutoDetail } from './pages/produto-detail/produto-detail';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -38,7 +40,8 @@ export function tokenGetter() {
     Menu,
     //ErrorDialog,
     Signup,
-    Produtos
+    Produtos,
+    ProdutoDetail
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ export function tokenGetter() {
     //JwtHelperService
     ClienteService,
     EstadoService,
-    CidadeService
+    CidadeService,
+    ProdutoService
   ],
   bootstrap: [App]
 })

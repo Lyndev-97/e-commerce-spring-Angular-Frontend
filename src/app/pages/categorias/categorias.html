@@ -2,7 +2,7 @@
 
 <div class="content-padding">
   <div class="list-container">
-    <button class="list-item" *ngFor="let item of items" (click)="showProdutos()">
+    <button class="list-item" *ngFor="let item of items" (click)="showProdutos(item.id)">
       <div class="item-thumbnail start">
         <img src="{{ bucketUrl }}" alt="" />
       </div>
