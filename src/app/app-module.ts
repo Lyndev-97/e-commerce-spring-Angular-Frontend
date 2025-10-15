@@ -26,6 +26,8 @@ import { CidadeService } from './services/domain/cidade.service';
 import { Produtos } from './pages/produtos/produtos';
 import { ProdutoService } from './services/domain/produto.service';
 import { ProdutoDetail } from './pages/produto-detail/produto-detail';
+import { CartService } from './services/domain/cart.service';
+import { Cart } from './pages/cart/cart';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -41,7 +43,8 @@ export function tokenGetter() {
     //ErrorDialog,
     Signup,
     Produtos,
-    ProdutoDetail
+    ProdutoDetail,
+    Cart
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ export function tokenGetter() {
     ClienteService,
     EstadoService,
     CidadeService,
-    ProdutoService
+    ProdutoService,
+    CartService
   ],
   bootstrap: [App]
 })

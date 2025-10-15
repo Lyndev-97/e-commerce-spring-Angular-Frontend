@@ -1,0 +1,36 @@
+<app-menu page=" Carrinho "></app-menu>
+<main class="content">
+  <ul class="item-list">
+    <li class="item" *ngFor="let item of items">
+      <div class="thumbnail">
+        <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'" alt="Produto" />
+      </div>
+      <div class="item-info">
+        <h2>{{ item.produto.nome }}</h2>
+        <p>{{ item.produto.preco | currency }}</p>
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity(item.produto)">−</button>
+          <span>{{ item.quantidade }}</span>
+          <button (click)="increaseQuantity(item.produto)">+</button>
+        </div>
+      </div>
+      <button class="remove-button" (click)="removeItem(item.produto)">🗑️</button>
+    </li>
+
+    <li class="total" *ngIf="total() > 0">
+      <h1>Total</h1>
+      <h1>{{ total() | currency }}</h1>
+    </li>
+
+    <li class="empty-cart" *ngIf="total() <= 0">
+      <h1>Seu carrinho está vazio</h1>
+    </li>
+  </ul>
+
+  <div class="actions">
+    <button class="btn" (click)="goOn()">Continuar comprando</button>
+    <button *ngIf="total() > 0" class="btn btn-secondary" (click)="checkout()">
+      Finalizar pedido
+    </button>
+  </div>
+</main>

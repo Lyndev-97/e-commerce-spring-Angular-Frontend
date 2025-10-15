@@ -3,6 +3,7 @@ import { ProdutoDTO } from '../../models/produto.dto';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_CONFIG } from '../../config/api.config';
+import { CartService } from '../../services/domain/cart.service';
 
 @Component({
   selector: 'app-produto-detail',
@@ -15,7 +16,10 @@ export class ProdutoDetail implements OnInit {
   item!: ProdutoDTO;
   produto_id: string | null = null;
 
-  constructor(public produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public produtoService: ProdutoService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
 
@@ -39,8 +43,9 @@ export class ProdutoDetail implements OnInit {
     this.router.navigate(['/categories']);
   }
 
-  addToCart(arg0: any) {
-    throw new Error('Method not implemented.');
+  addToCart(produto: ProdutoDTO) {
+    this.cartService.addProduto(produto);
+    this.router.navigate(['/CartPage']);
   }
 
   getImageUrlIfExists() {

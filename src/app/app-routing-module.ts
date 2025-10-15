@@ -6,6 +6,7 @@ import { Profile } from './pages/profile/profile';
 import { Signup } from './pages/signup/signup';
 import { Produtos } from './pages/produtos/produtos';
 import { ProdutoDetail } from './pages/produto-detail/produto-detail';
+import { Cart } from './pages/cart/cart';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'ProdutoDetail/:id',
     component: ProdutoDetail
+  },
+  {
+    path: 'CartPage',
+    component: Cart
   }
 ];
 
