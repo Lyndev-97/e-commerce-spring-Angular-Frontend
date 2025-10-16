@@ -4,6 +4,8 @@ import { StorageService } from '../../services/storage.service';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { API_CONFIG } from '../../config/api.config';
 import { CartService } from '../../services/domain/cart.service';
+import { ProdutoDTO } from '../../models/produto.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +19,7 @@ export class Cart implements OnInit {
   items: CartItem[] | null = null;
   test: number | null = null;
 
-  constructor(public cartService: CartService, public produtoService: ProdutoService) { }
+  constructor(public cartService: CartService, public produtoService: ProdutoService, private router: Router) { }
 
   ngOnInit(): void {
     let cart = this.cartService.getCart();
@@ -38,24 +40,26 @@ export class Cart implements OnInit {
     }
   }
 
+  removeItem(produto: ProdutoDTO) {
+    this.items = this.cartService.removeProduto(produto).itens;
+  }
 
-  increaseQuantity(arg0: any) {
-    throw new Error('Method not implemented.');
+  increaseQuantity(produto: ProdutoDTO) {
+    this.items = this.cartService.increaseQuantity(produto).itens;
   }
-  total() {
-    this.test = 1 + 1;
-    return this.test;
+
+  decreaseQuantity(produto: ProdutoDTO) {
+    this.items = this.cartService.decreaseQuantity(produto).itens;
   }
+
+  total(): number {
+    return this.cartService.total();
+  }
+
   goOn() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['/categories']);
   }
   checkout() {
-    throw new Error('Method not implemented.');
-  }
-  removeItem(arg0: any) {
-    throw new Error('Method not implemented.');
-  }
-  decreaseQuantity(arg0: any) {
     throw new Error('Method not implemented.');
   }
 
